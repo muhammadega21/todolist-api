@@ -62,7 +62,9 @@ class TodoController extends Controller
         }
 
         try {
-            Todo::create($request->input('name'));
+            Todo::create([
+                'name' => $request->input('name')
+            ]);
             return response()->json([
                 'status' => Response::HTTP_OK,
                 'message' => 'Success add todo'
