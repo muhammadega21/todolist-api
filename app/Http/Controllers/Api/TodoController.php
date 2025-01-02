@@ -15,7 +15,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::groupBy('status')->get();
+        $todos = Todo::orderBy('status')->latest('creaeted_at')->get();
 
         if ($todos->isEmpty()) {
             return response()->json([
